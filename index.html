@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CIE IGCSE Biology</title>
+    <style>
+      body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.5; }
+      .card { max-width: 720px; padding: 24px; border: 1px solid #ddd; border-radius: 12px; }
+      button { padding: 10px 14px; border-radius: 10px; border: 1px solid #ccc; cursor: pointer; }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h1>CIE IGCSE Biology</h1>
+      <p>Repo is working. Next: add topics + quizzes.</p>
+      <button id="btn">Click me</button>
+      <p id="out"></p>
+    </div>
+
+    <script>
+      document.getElementById("btn").addEventListener("click", () => {
+        document.getElementById("out").textContent = "Button works ✅";
+      });
+    </script>
+  </body>
+</html>
