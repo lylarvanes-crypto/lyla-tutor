@@ -3,325 +3,456 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lyla Tutor — Biology first</title>
+    <title>Lyla Tutor</title>
     <style>
       :root{
-        --bg0:#070A12;
-        --bg1:#0B1022;
-        --card:rgba(255,255,255,.06);
-        --card2:rgba(255,255,255,.10);
-        --txt:rgba(255,255,255,.92);
-        --muted:rgba(255,255,255,.68);
-        --muted2:rgba(255,255,255,.55);
-        --line:rgba(255,255,255,.14);
-        --shadow: 0 20px 60px rgba(0,0,0,.55);
-        --r: 20px;
+        --bg: #f6f4ff;
+        --panel: rgba(255,255,255,.75);
+        --panel2: rgba(255,255,255,.92);
+        --text: #0f172a;
+        --muted: rgba(15,23,42,.68);
+        --muted2: rgba(15,23,42,.52);
+        --line: rgba(15,23,42,.10);
+        --shadow: 0 22px 70px rgba(2,6,23,.12);
+        --shadow2: 0 14px 40px rgba(2,6,23,.10);
+        --r: 26px;
+        --accent: #6d28d9;     /* purple */
+        --accent2:#7c3aed;     /* purple bright */
+        --green: #16a34a;
+        --pink: #db2777;
       }
+
       *{box-sizing:border-box}
       html,body{height:100%}
       body{
         margin:0;
-        color:var(--txt);
-        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+        color:var(--text);
         background:
-          radial-gradient(1200px 700px at 15% 10%, rgba(123,92,255,.35), transparent 60%),
-          radial-gradient(900px 600px at 85% 20%, rgba(0,200,255,.22), transparent 55%),
-          radial-gradient(900px 700px at 55% 90%, rgba(0,255,160,.14), transparent 60%),
-          linear-gradient(180deg, var(--bg0), var(--bg1));
+          radial-gradient(900px 500px at 20% 10%, rgba(124,58,237,.16), transparent 60%),
+          radial-gradient(800px 520px at 80% 18%, rgba(56,189,248,.14), transparent 58%),
+          radial-gradient(900px 560px at 55% 85%, rgba(34,197,94,.10), transparent 60%),
+          linear-gradient(180deg, #fbfbff 0%, var(--bg) 55%, #ffffff 100%);
         overflow-x:hidden;
       }
 
-      .wrap{max-width:1120px; margin:0 auto; padding:28px 18px 70px}
-      .topbar{
-        display:flex; align-items:center; justify-content:space-between;
-        gap:16px; padding:10px 12px; border:1px solid var(--line);
-        background: rgba(255,255,255,.04);
-        border-radius: 999px;
-        backdrop-filter: blur(10px);
-      }
-      .brand{display:flex; align-items:center; gap:10px}
-      .logo{
-        width:34px; height:34px; border-radius:12px;
-        background: linear-gradient(135deg, rgba(123,92,255,.9), rgba(0,200,255,.75));
-        box-shadow: 0 10px 30px rgba(123,92,255,.25);
-        display:grid; place-items:center; font-weight:800;
-      }
-      .brand span{font-weight:700; letter-spacing:.2px}
+      .wrap{max-width:1160px; margin:0 auto; padding:44px 18px 70px}
+      .center{display:flex; justify-content:center}
       .pill{
-        display:flex; gap:8px; align-items:center; flex-wrap:wrap;
-        color:var(--muted);
-        font-size:13px;
-      }
-      .chip{
-        border:1px solid var(--line);
-        background: rgba(255,255,255,.03);
-        padding:6px 10px;
+        display:inline-flex; gap:10px; align-items:center;
+        padding:10px 16px;
         border-radius:999px;
+        background: rgba(109,40,217,.10);
+        color: var(--accent);
+        font-weight:700;
+        border: 1px solid rgba(109,40,217,.16);
+        box-shadow: 0 10px 30px rgba(109,40,217,.10);
+        user-select:none;
       }
-
-      .hero{
-        margin-top:26px;
-        display:grid;
-        grid-template-columns: 1.2fr .8fr;
-        gap:18px;
-        align-items:stretch;
-      }
-      @media (max-width: 920px){
-        .hero{grid-template-columns:1fr}
-      }
-
-      .panel{
-        border:1px solid var(--line);
-        background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-        border-radius: var(--r);
-        box-shadow: var(--shadow);
-        padding:22px;
-        position:relative;
-        overflow:hidden;
-      }
-      .panel:before{
-        content:"";
-        position:absolute;
-        inset:-2px;
-        background:
-          radial-gradient(450px 220px at 20% 0%, rgba(123,92,255,.35), transparent 60%),
-          radial-gradient(380px 260px at 100% 30%, rgba(0,200,255,.22), transparent 55%);
-        pointer-events:none;
-        opacity:.65;
-      }
-      .panel > *{position:relative; z-index:1}
+      .pill .spark{width:18px; height:18px; display:grid; place-items:center}
 
       h1{
-        margin:0 0 8px;
-        font-size: clamp(30px, 4vw, 48px);
-        line-height:1.05;
-        letter-spacing:-.6px;
+        margin:22px 0 10px;
+        text-align:center;
+        font-size: clamp(44px, 6vw, 86px);
+        line-height: 0.95;
+        letter-spacing: -1.2px;
+        font-weight: 900;
+      }
+      .grad{
+        background: linear-gradient(90deg, var(--accent) 0%, #5b7cfa 45%, #22c55e 100%);
+        -webkit-background-clip:text;
+        background-clip:text;
+        color:transparent;
       }
       .sub{
-        margin:0 0 18px;
+        margin:0 auto 26px;
+        text-align:center;
         color:var(--muted);
-        font-size: 15px;
-        max-width: 62ch;
+        max-width: 70ch;
+        font-size: 20px;
+        line-height: 1.5;
       }
 
-      .actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px}
+      .ctaRow{display:flex; justify-content:center; gap:14px; flex-wrap:wrap; margin:22px 0 8px}
       .btn{
-        appearance:none;
-        border:1px solid var(--line);
-        background: rgba(255,255,255,.04);
-        color:var(--txt);
-        padding:10px 14px;
-        border-radius: 12px;
+        border: 1px solid rgba(15,23,42,.12);
+        background: var(--panel2);
+        color: var(--text);
+        padding: 14px 20px;
+        border-radius: 16px;
+        font-weight: 800;
         cursor:pointer;
-        font-weight:650;
         text-decoration:none;
         display:inline-flex;
+        gap:10px;
         align-items:center;
-        gap:10px;
-        transition: transform .08s ease, background .15s ease, border-color .15s ease;
+        box-shadow: 0 18px 45px rgba(2,6,23,.10);
+        transition: transform .14s ease, box-shadow .18s ease, border-color .18s ease, background .18s ease;
       }
-      .btn:hover{background: rgba(255,255,255,.07); border-color: rgba(255,255,255,.22)}
-      .btn:active{transform: translateY(1px)}
+      .btn:hover{transform: translateY(-2px); box-shadow: 0 24px 60px rgba(2,6,23,.14)}
+      .btn:active{transform: translateY(0px) scale(.98)}
       .btn.primary{
-        border-color: rgba(123,92,255,.45);
-        background: linear-gradient(135deg, rgba(123,92,255,.55), rgba(0,200,255,.24));
+        background: linear-gradient(135deg, rgba(109,40,217,.95), rgba(124,58,237,.75));
+        border-color: rgba(109,40,217,.22);
+        color: #fff;
       }
-      .btn.primary:hover{border-color: rgba(123,92,255,.7)}
-      .icon{
-        width:22px; height:22px; border-radius:8px;
-        background: rgba(255,255,255,.07);
+      .btn .ico{
+        width:34px; height:34px; border-radius: 14px;
         display:grid; place-items:center;
-        font-size:13px;
+        background: rgba(255,255,255,.20);
+      }
+      .btn:not(.primary) .ico{
+        background: rgba(109,40,217,.10);
+        color: var(--accent);
       }
 
-      .grid{
-        display:grid;
-        grid-template-columns: 1fr;
-        gap:12px;
-      }
-      .card{
-        border:1px solid var(--line);
-        background: rgba(255,255,255,.04);
-        border-radius: 16px;
-        padding:14px 14px 12px;
-        transition: background .15s ease, border-color .15s ease, transform .08s ease;
-      }
-      .card:hover{background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.22)}
-      .card:active{transform: translateY(1px)}
-      .card a{color:inherit; text-decoration:none; display:block}
-      .kicker{display:flex; align-items:center; justify-content:space-between; gap:10px}
-      .title{font-weight:750; letter-spacing:.2px}
-      .meta{color:var(--muted2); font-size:13px}
-      .desc{margin:8px 0 0; color:var(--muted); font-size:14px; line-height:1.35}
-
-      .two{
-        display:grid;
-        grid-template-columns: 1fr 1fr;
-        gap:12px;
-        margin-top:14px;
-      }
-      @media (max-width: 920px){
-        .two{grid-template-columns:1fr}
-      }
-
-      .mini{
-        border:1px solid var(--line);
-        background: rgba(255,255,255,.03);
-        border-radius: 16px;
-        padding:14px;
-      }
-      .mini h3{margin:0 0 8px; font-size:14px; color:var(--muted)}
-      .mini ul{margin:0; padding-left:18px; color:var(--muted); font-size:14px}
-      .mini li{margin:6px 0}
-      .soon{opacity:.7}
-      .badge{
-        font-size:12px;
-        color:rgba(255,255,255,.75);
-        border:1px solid var(--line);
-        padding:4px 10px;
-        border-radius:999px;
-        background: rgba(255,255,255,.03);
-      }
-
-      .footer{
-        margin-top:18px;
-        color:var(--muted2);
-        font-size:12px;
+      /* ===== Feature wave cards (your “second photo”) ===== */
+      .waveRow{
+        margin: 56px auto 0;
         display:flex;
-        justify-content:space-between;
+        justify-content:center;
+        gap:26px;
         flex-wrap:wrap;
-        gap:10px;
+        padding: 22px 0;
       }
-      .footer a{color:rgba(255,255,255,.7)}
-      .hint{color:rgba(255,255,255,.6)}
-      code{color:rgba(255,255,255,.85)}
+
+      .feature{
+        width: 240px;
+        background: rgba(255,255,255,.85);
+        border: 1px solid rgba(15,23,42,.08);
+        border-radius: 22px;
+        padding: 22px 22px 18px;
+        box-shadow: var(--shadow2);
+        display:flex;
+        flex-direction:column;
+        gap:10px;
+        transform: translateY(0);
+        transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+        position:relative;
+        overflow:hidden;
+        will-change: transform;
+        animation: float 5.4s ease-in-out infinite;
+      }
+      .feature:nth-child(2){animation-delay: .9s}
+      .feature:nth-child(3){animation-delay: 1.8s}
+
+      @keyframes float{
+        0%{transform: translateY(0px)}
+        50%{transform: translateY(-10px)}
+        100%{transform: translateY(0px)}
+      }
+
+      .feature:hover{
+        border-color: rgba(109,40,217,.18);
+        box-shadow: 0 26px 70px rgba(2,6,23,.14);
+      }
+      .fIcon{
+        width:52px; height:52px;
+        border-radius: 18px;
+        display:grid; place-items:center;
+        background: linear-gradient(135deg, rgba(109,40,217,.14), rgba(59,130,246,.10));
+        border: 1px solid rgba(109,40,217,.14);
+      }
+      .feature h3{
+        margin: 2px 0 0;
+        font-size: 18px;
+        letter-spacing: -.2px;
+      }
+      .feature p{
+        margin:0;
+        color:var(--muted);
+        line-height:1.45;
+        font-size: 15px;
+      }
+
+      /* ===== Explore Subjects (your “third/fourth photo”) ===== */
+      .section{
+        margin-top: 64px;
+      }
+      .section h2{
+        text-align:center;
+        font-size: 56px;
+        margin: 0;
+        letter-spacing: -.8px;
+      }
+      .section .sectionSub{
+        text-align:center;
+        color: var(--muted);
+        margin: 8px 0 34px;
+        font-size: 20px;
+      }
+
+      .subjects{
+        display:grid;
+        grid-template-columns: repeat(2, minmax(280px, 520px));
+        gap: 28px;
+        justify-content:center;
+        align-items:stretch;
+      }
+      @media (max-width: 980px){
+        .subjects{grid-template-columns: 1fr; max-width: 560px; margin: 0 auto}
+        .section h2{font-size: 42px}
+      }
+
+      .subjCard{
+        border-radius: 28px;
+        overflow:hidden;
+        background: #fff;
+        border: 1px solid rgba(15,23,42,.08);
+        box-shadow: var(--shadow);
+        cursor:pointer;
+        transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+        position:relative;
+      }
+
+      /* lift + glow (hover) */
+      .subjCard:hover{
+        transform: translateY(-6px);
+        box-shadow: 0 28px 90px rgba(2,6,23,.18);
+        border-color: rgba(109,40,217,.20);
+      }
+
+      /* click "press" + highlight (active/selected) */
+      .subjCard:active{transform: translateY(-2px) scale(.99)}
+      .subjCard.selected{
+        border-color: rgba(109,40,217,.35);
+        box-shadow: 0 34px 110px rgba(109,40,217,.20);
+      }
+      .subjCard.selected::after{
+        content:"";
+        position:absolute;
+        inset:0;
+        background: radial-gradient(700px 260px at 70% 55%, rgba(109,40,217,.12), transparent 60%);
+        pointer-events:none;
+      }
+
+      .imgWrap{
+        height: 210px;
+        position:relative;
+        background: #e9e9f7;
+      }
+      .imgWrap img{
+        width:100%;
+        height:100%;
+        object-fit:cover;
+        display:block;
+        filter: saturate(1.05) contrast(1.03);
+        transform: scale(1.02);
+      }
+      .tag{
+        position:absolute;
+        left: 16px;
+        top: 16px;
+        background: rgba(255,255,255,.90);
+        border: 1px solid rgba(15,23,42,.10);
+        border-radius: 999px;
+        padding: 8px 12px;
+        font-weight: 800;
+        color: rgba(15,23,42,.72);
+        display:inline-flex;
+        gap:8px;
+        align-items:center;
+        box-shadow: 0 18px 45px rgba(2,6,23,.10);
+      }
+
+      .subjBody{
+        padding: 22px 22px 20px;
+        background: linear-gradient(180deg, #ffffff, rgba(255,255,255,.96));
+      }
+      .subjTitle{
+        margin:0;
+        font-size: 30px;
+        font-weight: 900;
+        letter-spacing: -.6px;
+      }
+      .subjDesc{
+        margin: 10px 0 0;
+        color: var(--muted);
+        font-size: 17px;
+        line-height: 1.5;
+        max-width: 46ch;
+      }
+      .subjFooter{
+        margin-top: 18px;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap: 14px;
+        color: var(--muted2);
+        font-weight: 700;
+      }
+      .arrowBtn{
+        width: 56px; height: 56px;
+        border-radius: 18px;
+        border: 0;
+        cursor:pointer;
+        display:grid;
+        place-items:center;
+        color:#fff;
+        box-shadow: 0 18px 50px rgba(2,6,23,.18);
+        transition: transform .14s ease, filter .14s ease;
+      }
+      .arrowBtn:active{transform: scale(.96)}
+      .arrowBtn.psych{background: linear-gradient(135deg, var(--pink), #f97316)}
+      .arrowBtn.bio{background: linear-gradient(135deg, var(--green), #22c55e)}
+      .arrowBtn svg{width:22px; height:22px}
+
+      .darkCTA{
+        margin-top: 70px;
+        border-radius: 28px;
+        background: linear-gradient(180deg, #0b1224, #0a1020);
+        color:#fff;
+        padding: 58px 26px;
+        text-align:center;
+        box-shadow: 0 30px 120px rgba(2,6,23,.35);
+      }
+      .darkCTA h3{
+        margin:0;
+        font-size: 42px;
+        letter-spacing:-.6px;
+      }
+      .darkCTA p{
+        margin:10px auto 0;
+        max-width: 60ch;
+        color: rgba(255,255,255,.72);
+        font-size: 18px;
+        line-height: 1.6;
+      }
+
+      /* accessibility */
+      a{color:inherit}
+      .sr{position:absolute; left:-9999px}
     </style>
   </head>
+
   <body>
     <div class="wrap">
-      <div class="topbar">
-        <div class="brand">
-          <div class="logo">L</div>
-          <span>lyla-tutor</span>
+      <div class="center">
+        <div class="pill"><span class="spark">✨</span> Learn smarter, not harder</div>
+      </div>
+
+      <h1>Master Your Exams<br /><span class="grad">The Fun Way</span></h1>
+
+      <p class="sub">
+        Interactive flashcards, engaging quizzes, and study notes designed to help you ace your exams with confidence.
+      </p>
+
+      <div class="ctaRow">
+        <a class="btn primary" href="biology/">
+          <span class="ico">📚</span>
+          Start Learning
+        </a>
+        <a class="btn" href="#subjects">
+          <span class="ico">🧠</span>
+          Explore Subjects
+        </a>
+      </div>
+
+      <!-- Wave-floating feature cards -->
+      <div class="waveRow" aria-label="Study tools">
+        <div class="feature">
+          <div class="fIcon">📝</div>
+          <h3>Study Notes</h3>
+          <p>Clear, syllabus-aligned notes that build understanding fast.</p>
         </div>
-        <div class="pill">
-          <span class="chip">Biology live</span>
-          <span class="chip soon">Psychology soon</span>
-          <span class="chip soon">TOK soon</span>
+        <div class="feature">
+          <div class="fIcon">🃏</div>
+          <h3>Flashcards</h3>
+          <p>Quick recall practice with spaced repetition later.</p>
+        </div>
+        <div class="feature">
+          <div class="fIcon">✅</div>
+          <h3>Quizzes</h3>
+          <p>Immediate feedback, explanations, and exam-style practice.</p>
         </div>
       </div>
 
-      <div class="hero">
-        <div class="panel">
-          <h1>Interactive notes + quizzes.<br/>Built like a real product.</h1>
-          <p class="sub">
-            Start with Biology. Add Psychology and TOK later without rebuilding anything.
-            Clean structure. Fast pages. No clutter.
-          </p>
+      <!-- Explore Subjects -->
+      <div class="section" id="subjects">
+        <h2>Explore Subjects</h2>
+        <div class="sectionSub">Choose a subject to start your learning journey</div>
 
-          <div class="actions">
-            <a class="btn primary" href="biology/">
-              <span class="icon">🧬</span>
-              Enter Biology
-            </a>
-            <a class="btn" href="biology/igcse/cie/">
-              <span class="icon">📘</span>
-              IGCSE CIE
-            </a>
-            <button class="btn" id="randomBtn" type="button">
-              <span class="icon">🎲</span>
-              Random section
-            </button>
-          </div>
-
-          <div class="two">
-            <div class="mini">
-              <h3>Biology structure</h3>
-              <ul>
-                <li>IGCSE → CIE / Edexcel (International)</li>
-                <li>A Level → CIE / Edexcel IAL</li>
-                <li>IB Biology</li>
-                <li>AP Biology</li>
-              </ul>
+        <div class="subjects">
+          <!-- Psychology (coming soon) -->
+          <div class="subjCard" data-href="#" data-disabled="true" id="psychCard">
+            <div class="imgWrap">
+              <img
+                alt="Psychology"
+                src="https://images.unsplash.com/photo-1559757175-5700dde67548?auto=format&fit=crop&w=1400&q=60"
+              />
+              <div class="tag">📚 <span>0 Topics</span></div>
             </div>
-            <div class="mini">
-              <h3>What’s next</h3>
-              <ul>
-                <li>Topic pages (syllabus aligned)</li>
-                <li>Mini quizzes + instant feedback</li>
-                <li>Progress tracking later (optional)</li>
-                <li class="hint">Psychology + TOK will mirror this layout</li>
-              </ul>
+            <div class="subjBody">
+              <h3 class="subjTitle">Psychology</h3>
+              <p class="subjDesc">Explore the human mind, behavior, and mental processes</p>
+              <div class="subjFooter">
+                <span>Quizzes &amp; Flashcards</span>
+                <button class="arrowBtn psych" type="button" aria-label="Psychology coming soon">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M9 18l6-6-6-6" stroke="white" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+              </div>
             </div>
           </div>
 
-          <div class="footer">
-            <span class="hint">Tip: bookmark <code>/biology/igcse/cie/</code> for your first build.</span>
-            <span class="badge" id="status">Ready</span>
+          <!-- Biology (live) -->
+          <div class="subjCard" data-href="biology/" id="bioCard">
+            <div class="imgWrap">
+              <img
+                alt="Biology"
+                src="https://images.unsplash.com/photo-1530026186672-2cd00ffc50e9?auto=format&fit=crop&w=1400&q=60"
+              />
+              <div class="tag">📚 <span>1 Topic</span></div>
+            </div>
+            <div class="subjBody">
+              <h3 class="subjTitle"><span class="grad" style="-webkit-background-clip:text;background-clip:text;color:transparent;">Biology</span></h3>
+              <p class="subjDesc">Explore life sciences from cells to ecosystems</p>
+              <div class="subjFooter">
+                <span>Quizzes &amp; Flashcards</span>
+                <button class="arrowBtn bio" type="button" aria-label="Open Biology">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M9 18l6-6-6-6" stroke="white" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
+      </div>
 
-        <div class="grid">
-          <div class="card">
-            <a href="biology/">
-              <div class="kicker">
-                <div class="title">Biology</div>
-                <div class="meta">live</div>
-              </div>
-              <p class="desc">Curriculum hub. Fast access to IGCSE, A Level, IB, AP.</p>
-            </a>
-          </div>
-
-          <div class="card soon">
-            <a href="#" onclick="return false;">
-              <div class="kicker">
-                <div class="title">Psychology</div>
-                <div class="meta">coming soon</div>
-              </div>
-              <p class="desc">Same layout: IGCSE / A Level / IB / AP, then topics + quizzes.</p>
-            </a>
-          </div>
-
-          <div class="card soon">
-            <a href="#" onclick="return false;">
-              <div class="kicker">
-                <div class="title">TOK</div>
-                <div class="meta">coming soon</div>
-              </div>
-              <p class="desc">Essay tools, exhibitions, claims/counterclaims, examples.</p>
-            </a>
-          </div>
-
-          <div class="card">
-            <a href="biology/igcse/cie/">
-              <div class="kicker">
-                <div class="title">Start here</div>
-                <div class="meta">IGCSE CIE</div>
-              </div>
-              <p class="desc">First curriculum build. We’ll add the first topic + quiz next.</p>
-            </a>
-          </div>
-        </div>
+      <!-- Dark CTA footer strip like your last screenshot -->
+      <div class="darkCTA">
+        <h3>Ready to ace your exams?</h3>
+        <p>Start learning today with interactive study tools. Biology is live; Psychology and TOK are next.</p>
       </div>
     </div>
 
     <script>
-      const routes = [
-        "biology/igcse/cie/",
-        "biology/igcse/edexcel/",
-        "biology/alevel/cie/",
-        "biology/alevel/edexcel-ial/",
-        "biology/ib/",
-        "biology/ap/"
-      ];
+      // Click -> animate highlight + navigate (like your 3rd/4th screenshots)
+      function selectCard(card) {
+        document.querySelectorAll(".subjCard").forEach(c => c.classList.remove("selected"));
+        card.classList.add("selected");
+        // tiny delay so the highlight feels responsive before navigation
+        const href = card.getAttribute("data-href");
+        const disabled = card.getAttribute("data-disabled") === "true";
+        if (!disabled && href && href !== "#") {
+          setTimeout(() => (window.location.href = href), 160);
+        }
+      }
 
-      const status = document.getElementById("status");
-      const btn = document.getElementById("randomBtn");
+      document.querySelectorAll(".subjCard").forEach(card => {
+        card.addEventListener("click", () => selectCard(card));
+      });
 
-      btn.addEventListener("click", () => {
-        const pick = routes[Math.floor(Math.random() * routes.length)];
-        status.textContent = "Opening: " + pick.replace("biology/","").replace(/\/$/,"");
-        window.location.href = pick;
+      // Make the arrow buttons behave the same as clicking the card
+      document.querySelectorAll(".arrowBtn").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          const card = btn.closest(".subjCard");
+          selectCard(card);
+        });
       });
     </script>
   </body>
